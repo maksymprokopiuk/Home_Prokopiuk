@@ -160,7 +160,7 @@ class GoldenClient extends Client {
     }
     getMoney(sum) {
         // super.getMoney(sum)
-        if (sum <= this.money) {
+        if (sum <= this.money && sum > 0) {
             this.money-=sum
         } else if (sum > this.money && sum <= (this.money+this.limitMoney)) {
             this.useLimit = this.limitMoney - ((this.money+this.limitMoney)-sum)
