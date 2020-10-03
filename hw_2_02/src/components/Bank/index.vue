@@ -65,10 +65,13 @@
                 }
             },
             getSum() {
-                if (this.rakhunok < (parseFloat(this.getMoney) + this.percent)) {
-                    // return console.log('red');
-                } else {
-                    return this.rakhunok -= (parseFloat(this.getMoney) + this.percent)
+                if (this.getMoney > 0) {
+                    
+                    if (this.rakhunok < (parseFloat(this.getMoney) + this.percent)) {
+                        // return console.log('red');
+                    } else {
+                        return this.rakhunok -= (parseFloat(this.getMoney) + this.percent)
+                    }
                 }
             },
             currency(money) {
