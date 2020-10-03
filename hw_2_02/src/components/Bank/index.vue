@@ -1,6 +1,8 @@
 <template>
     <div>
-        <span>Сума на рахунку: {{(rakhunok).toFixed(2)}}</span>
+        <span>Сума на рахунку: </span>
+        <span class="green" v-if="moveMoney === true">{{(rakhunok).toFixed(2)}}</span>
+        <span class="red" v-if="moveMoney === false">{{(rakhunok).toFixed(2)}}</span>
         <br>
         <span>Зарахувати на рахунок: </span>
         <input v-model="addMoney" @focus="getMoney=0">
@@ -13,9 +15,12 @@
         <span>Відсотки за обслуговування: {{(percent).toFixed(2)}}</span>
         <hr>
         <span>Сума в доларах: $</span>
-        <span>{{(currency(dollar)).toFixed(2)}}</span>
+        <span class="red" v-if="(currency(dollar)).toFixed(2) < 100">{{(currency(dollar)).toFixed(2)}}</span>
+        <span class="green" v-if="(currency(dollar)).toFixed(2) > 100">{{(currency(dollar)).toFixed(2)}}</span>
         <br>
-        <span>Сума в євро: €{{(currency(euro)).toFixed(2)}}</span>
+        <span>Сума в євро: €</span>
+        <span class="red" v-if="(currency(euro)).toFixed(2) < 100">{{(currency(euro)).toFixed(2)}}</span>
+        <span class="green" v-if="(currency(euro)).toFixed(2) > 100">{{(currency(euro)).toFixed(2)}}</span>
     </div>
 </template>
 
@@ -28,6 +33,7 @@
                 rakhunok: 0,
                 addMoney: 0,
                 getMoney: 0,
+                moveMoney: true,
             }
         },
 
@@ -61,6 +67,7 @@
         methods: {
             addSum() {
                 if (this.addMoney > 0) {
+                    this.moveMoney = true
                     return this.rakhunok += (parseFloat(this.addMoney) - this.percent)
                 }
             },
@@ -70,6 +77,7 @@
                     if (this.rakhunok < (parseFloat(this.getMoney) + this.percent)) {
                         // return console.log('red');
                     } else {
+                        this.moveMoney = false
                         return this.rakhunok -= (parseFloat(this.getMoney) + this.percent)
                     }
                 }
@@ -82,5 +90,10 @@
 </script>
 
 <style scoped>
-    
+    .red {
+        color: red;
+    }
+    .green {
+        color: green;
+    }
 </style>
