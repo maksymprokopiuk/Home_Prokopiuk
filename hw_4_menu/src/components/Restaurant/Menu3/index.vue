@@ -2,6 +2,7 @@
     <div>
         <h1>History</h1>
         <ul>
+            <span v-if="menuList3[0] === undefined">{{ listEmpty }}</span>
             <li v-for="(el, index) in menuList3" :key="index">{{ el }}
             </li>
         </ul>
@@ -13,6 +14,10 @@
         name: 'Menu3',
 
         props: {
+            listEmpty: {
+                type: String,
+                default: 'The list is empty'
+            },
             menuList3: {
                 type: Array,
                 default: ()=> []

@@ -2,6 +2,7 @@
     <div>
         <h1>Menu1</h1>
         <ul>
+            <span v-if="menuList1[0] === undefined">{{ listEmpty }}</span>
             <li v-for="(el, index) in menuList1" :key="index">{{ el }}
                 <button @click="$emit('postponed', index)">Done</button>
             </li>
@@ -14,6 +15,10 @@
         name: 'Menu1',
 
         props: {
+            listEmpty: {
+                type: String,
+                default: 'The list is empty'
+            },
             menuList1: {
                 type: Array,
                 default: ()=> []
