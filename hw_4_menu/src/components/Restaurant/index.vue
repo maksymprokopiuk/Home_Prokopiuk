@@ -11,12 +11,12 @@
             <menu-1 class="menu"
                 :titleMenu1="titleMenu1"
                 :menuList1="menuList"
-                @done="onDone"
+                @ready="onReady"
             />
             <menu-2 class="menu"
                 :titleMenu2="titleMenu2"
                 :menuList2="menuList2"
-                @done2="onDone2"
+                @done="onDone"
             />
             <menu-3 class="menu"
                 :titleMenu3="titleMenu3"
@@ -63,11 +63,11 @@
                 this.menuList.push(val)
                 this.inputMeal = ''
             },
-            onDone(index) {
+            onReady(index) {
                 this.menuList2.push(this.menuList[index])
                 this.menuList.splice(index, 1)
             },
-            onDone2(index) {
+            onDone(index) {
                 this.menuList3.unshift(this.menuList2[index])
                 this.menuList2.splice(index, 1)
             },

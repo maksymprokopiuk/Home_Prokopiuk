@@ -4,7 +4,7 @@
         <ul>
             <span v-if="menuList2[0] === undefined">{{ listEmpty }}</span>
             <li v-for="(el, index) in menuList2" :key="index">{{ el }}
-                <button @click="$emit('done2', index)">Done</button>
+                <button @click="$emit('done', index)">Done</button>
             </li>
         </ul>
     </div>
