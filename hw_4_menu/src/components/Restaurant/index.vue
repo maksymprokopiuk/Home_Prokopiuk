@@ -9,14 +9,17 @@
         </div>
         <div class="menus">
             <menu-1 class="menu"
+                :titleMenu1="titleMenu1"
                 :menuList1="menuList"
                 @done="onDone"
             />
             <menu-2 class="menu"
+                :titleMenu2="titleMenu2"
                 :menuList2="menuList2"
                 @done2="onDone2"
             />
             <menu-3 class="menu"
+                :titleMenu3="titleMenu3"
                 :menuList3="menuList3"
             />
         </div>
@@ -43,6 +46,9 @@
                 menuList2: [],
                 menuList3: [],
                 inputMeal: null,
+                titleMenu1: 'Ordered',
+                titleMenu2: 'Cooked',
+                titleMenu3: 'History',
             }
         },
 

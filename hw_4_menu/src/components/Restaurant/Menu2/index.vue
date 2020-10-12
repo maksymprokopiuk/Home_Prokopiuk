@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Menu2</h1>
+        <h1>{{ titleMenu2 }}</h1>
         <ul>
             <span v-if="menuList2[0] === undefined">{{ listEmpty }}</span>
             <li v-for="(el, index) in menuList2" :key="index">{{ el }}
@@ -15,6 +15,10 @@
         name: 'Menu2',
 
         props: {
+            titleMenu2: {
+                type: String,
+                default: 'Menu2'
+            },
             listEmpty: {
                 type: String,
                 default: 'The list is empty'
